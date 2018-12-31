@@ -3,7 +3,7 @@ from setuptools import setup
 setup(name='StkBatchPrgm',
       version='0.1',
       description='The program that will change my world',
-      url='http://github.com/storborg/funniest',
+      url='https://github.com/ajithittan/IntelliStock/tree/master/StkBatchPrgm',
       author='Flying high',
       author_email='ajithittan@gmail.com',
       license='MINE',
