@@ -6,4 +6,5 @@ app_name = 'StockData'
 urlpatterns = [
     path('', views.index, name='index'),
     path('Trigger', views.dispTrigSent, name='Trigger'),
+    path('setTrigSent', views.setTrigSent, name='TriggerSent'),
 ]

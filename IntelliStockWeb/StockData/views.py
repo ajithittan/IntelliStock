@@ -9,4 +9,4 @@ def dispTrigSent(request):
     return render(request, 'StockData/Trigger.html')
 
 def setTrigSent(request):
-    return render(request, 'StockData/Trigger.html')
+    return render(request, 'StockData/index.html')
