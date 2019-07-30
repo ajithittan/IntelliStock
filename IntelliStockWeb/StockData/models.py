@@ -8,6 +8,14 @@ class STK_Code(models.Model):
     def __str__(self):
         return self.stk_code
 
+class STK_TrigSent(models.Model):
+    stk_code = models.ForeignKey(STK_Code, on_delete=models.CASCADE)
+    stk_TrigStat = models.IntegerField(default=0)
+    stk_TrigDtTm = models.DateTimeField('DtTm of Change')
+
+    def __str__(self):
+        return self.stk_TrigStat
+
 class STK_Sentiment(models.Model):
     stk_code = models.ForeignKey(STK_Code, on_delete=models.CASCADE)
     stk_SentimentInd = models.IntegerField(default=0)

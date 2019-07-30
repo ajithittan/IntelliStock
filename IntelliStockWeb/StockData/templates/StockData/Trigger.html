@@ -1,0 +1,9 @@
+<h1>Input the Stock you need triggered....</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="setTrigSent" method="post">
+{% csrf_token %}
+<input type="text" name="stkId" id="stkId">
+<input type="submit" value="Trigger">
+</form>
