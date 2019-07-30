@@ -9,4 +9,8 @@ def dispTrigSent(request):
     return render(request, 'StockData/Trigger.html')
 
 def setTrigSent(request):
-    return render(request, 'StockData/index.html')
+    try:
+        retMsg = request.POST['stkId']
+        return render(request, 'StockData/Trigger.html',{'error_message': retMsg})
+    except Exception as e:
+        return HttpResponseRedirect(reverse('StockData:index',))
