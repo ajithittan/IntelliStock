@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from .models import STK_TrigSent
+from .models import STK_Code
+
 import datetime
 
 def index(request):
@@ -13,7 +15,9 @@ def dispTrigSent(request):
 def setTrigSent(request):
     try:
         retMsg = request.POST['stkId']
-        objtrigsent = STK_TrigSent(stk_code=retMsg,stk_TrigStat=1,stk_TrigDtTm=datetime.datetime.now())
+        stk_code_obj = STK_Code.objects.filter(stk_code=retMsg)
+        objtrigsent = STK_TrigSent(stk_code=stk_code_obj,stk_TrigStat=1,stk_TrigDtTm=datetime.datetime.now())
+        print(objtrigsent)
         objtrigsent.save()
         return render(request, 'StockData/Trigger.html',{'error_message': retMsg})
     except Exception as e:
