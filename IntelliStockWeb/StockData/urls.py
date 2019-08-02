@@ -7,4 +7,5 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('Trigger', views.dispTrigSent, name='Trigger'),
     path('setTrigSent', views.setTrigSent, name='Trigger'),
+    path('getTrigStks', views.getTrigStks, name='GetTrigger'),
 ]

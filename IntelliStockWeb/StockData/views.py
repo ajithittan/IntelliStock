@@ -28,7 +28,7 @@ def setTrigSent(request):
 def getTrigStks (request):
     try:
         print("Am I here?")
-        render(request, 'StockData/DispTrigs.html')
+        return render(request, 'StockData/DispTrigs.html')
     except Exception as e:
         print(e)
         return render(request, 'StockData/Trigger.html',{'error_message': "FUCKED!"})
