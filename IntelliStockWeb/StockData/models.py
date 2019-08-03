@@ -6,7 +6,7 @@ class STK_Code(models.Model):
     stk_Desc = models.CharField(max_length=600)
 
     def __str__(self):
-        return self.stk_code
+        return str(self.stk_code)
 
 class STK_TrigSent(models.Model):
     stk_code = models.ForeignKey(STK_Code, on_delete=models.CASCADE)
@@ -14,7 +14,7 @@ class STK_TrigSent(models.Model):
     stk_TrigDtTm = models.DateTimeField('DtTm of Change')
 
     def __str__(self):
-        return self.stk_TrigStat
+        return str(self.stk_TrigStat)
 
 class STK_Sentiment(models.Model):
     stk_code = models.ForeignKey(STK_Code, on_delete=models.CASCADE)
@@ -22,4 +22,4 @@ class STK_Sentiment(models.Model):
     stk_DtTmofChg = models.DateTimeField('DtTm of Change')
 
     def __str__(self):
-        return self.stk_DtTmofChg
+        return str(self.stk_DtTmofChg)
