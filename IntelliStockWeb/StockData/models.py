@@ -1,4 +1,5 @@
 from django.db import models
+import datetime
 
 # Create your models here.
 class STK_Code(models.Model):
@@ -11,7 +12,7 @@ class STK_Code(models.Model):
 class STK_TrigSent(models.Model):
     stk_code = models.ForeignKey(STK_Code, on_delete=models.CASCADE)
     stk_TrigStat = models.IntegerField(default=0)
-    stk_TrigDtTm = models.DateTimeField('DtTm of Change')
+    stk_TrigDtTm = models.DateTimeField(default=datetime.datetime.now)
 
     def __str__(self):
         return str(self.stk_TrigStat)
@@ -19,7 +20,7 @@ class STK_TrigSent(models.Model):
 class STK_Sentiment(models.Model):
     stk_code = models.ForeignKey(STK_Code, on_delete=models.CASCADE)
     stk_SentimentInd = models.IntegerField(default=0)
-    stk_DtTmofChg = models.DateTimeField('DtTm of Change')
+    stk_DtTmofChg = models.DateTimeField(default=datetime.datetime.now)
 
     def __str__(self):
         return str(self.stk_DtTmofChg)

@@ -1,3 +1,29 @@
-{% extends 'StockData/Trigger.html' %}
 
 <h1>Aha This page is very cool.....!</h1>
+
+<BR>
+
+<table>
+   <tr>
+       <th>Id</th>
+       <th>Stock Code</th>
+       <th>Status</th>
+       <th>Date Time</th>
+   </tr>
+   {% for stkTrigs in stkTriggers %}
+       <tr>
+           <td>{{stkTrigs.id}}</td>
+           <td>{{stkTrigs.stk_code}}</td>
+           <td>{{stkTrigs.stk_TrigStat}}</td>
+           <td>{{stkTrigs.stk_TrigDtTm}}</td>
+           <td>
+             <form action= {{ 'delTrigStks' }} method="post">
+             		           {% csrf_token %}
+             				<input type="hidden" name="stkTrigId" value="{{stkTrigs.id}}" />
+                    <input type="hidden" name="stkCd" value="{{stkTrigs.stk_code}}" />
+             			  <input type="submit" value="Remove Trigger">
+            </form>
+          </td>
+       </tr>
+   {% endfor %}
+</table>
