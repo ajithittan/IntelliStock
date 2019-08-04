@@ -4,7 +4,11 @@
 
 <form action="{{ 'setTrigSent' }}" method="post">
 {% csrf_token %}
-<input type="text" name="stkId" id="stkId">
+<select name="stkId" id="stkId">
+{% for stkcdvals in stkcds %}
+    <option value="{{ stkcdvals.stk_code }}">{{ stkcdvals.stk_code }}</option>
+{% endfor %}
+</select>
 <input type="submit" value="Trigger">
 <a href="{{ 'getTrigStks' }}"> Get All Triggered Stocks</a>
 </form>
