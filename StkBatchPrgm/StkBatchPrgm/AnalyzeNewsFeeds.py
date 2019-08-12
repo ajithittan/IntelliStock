@@ -2,12 +2,13 @@ import spacy
 import urllib.request
 from bs4 import BeautifulSoup
 
-response =  urllib.request.urlopen('https://en.wikipedia.org/wiki/SpaceX')
+response =  urllib.request.urlopen('https://finance.yahoo.com/news/making-sense-market-191107758.html')
 html = response.read()
-print(html)
+#print(html)
 
-soup = BeautifulSoup(html,'html5lib')
-text = soup.get_text(strip = True)
+soup = BeautifulSoup(html,"lxml")
+text = soup.get_text()
+#print(soup.prettify())
 print(text)
 
 nlp = spacy.load('en',disable = ['ner'])
@@ -16,4 +17,4 @@ nlp.max_length = 93621305
 
 customer_feedback = open("Receipt.pdf","r",encoding='utf-8', errors='ignore').read()
 doc = nlp(customer_feedback)
-print(doc.json())
+#print(doc.json())
