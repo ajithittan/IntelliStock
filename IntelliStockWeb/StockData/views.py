@@ -9,9 +9,13 @@ import datetime
 def index(request):
     return render(request, 'StockData/index.html')
 
-def dispTrigSent(request):
+def dispTrigSent(request,strMsg=""):
     stkcds  = STK_Code.objects.filter()
-    return render(request, 'StockData/Trigger.html', {'stkcds':stkcds})
+    if strMsg == "":
+        return render(request, 'StockData/Trigger.html', {'stkcds':stkcds})
+    else:
+        print("in here?",strMsg)
+        return render(request, 'StockData/Trigger.html', {'stkcds':stkcds,'error_message': "Triggered smart analysis for - " + strMsg + " Wait for it!!! "})
 
 def setTrigSent(request):
     try:
@@ -20,9 +24,10 @@ def setTrigSent(request):
             stk_code_obj = STK_Code.objects.filter(stk_code=retMsg)[0]
             objtrigsent = STK_TrigSent(stk_code=stk_code_obj,stk_TrigStat=1,stk_TrigDtTm=datetime.datetime.now())
             objtrigsent.save()
-            return render(request, 'StockData/Trigger.html',{'error_message': "Triggered smart analysis for - " + retMsg + " Wait for it!!! "})
+            return dispTrigSent (request,retMsg)
         elif request.method == 'GET':
-            return dispTrigSent (request)    
+            print("Is this the issue?")
+            return dispTrigSent (request)
     except Exception as e:
         print(e)
         return render(request, 'StockData/Trigger.html',{'error_message': "FUCKED!"})
@@ -38,7 +43,6 @@ def getTrigStks (request):
 def delTrigStks (request):
     try:
         if request.method == 'POST':
-            print("Am I here?")
             stkTrigId = request.POST['stkTrigId']
             stkCd = request.POST['stkCd']
             objTrigStk = STK_TrigSent.objects.get(id=stkTrigId)
