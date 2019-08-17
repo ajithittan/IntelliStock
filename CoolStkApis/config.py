@@ -1,3 +1,7 @@
-DEBUG = True # Turns on debugging features in Flask
-BCRYPT_LOG_ROUNDS = 12 # Configuration for the Flask-Bcrypt extension
-MAIL_FROM_EMAIL = "ajithittan@hotmail.com" # For use in application emails
+import os
+
+# You need to replace the next values with the appropriate values for your configuration
+basedir = os.path.abspath(os.path.dirname(__file__))
+SQLALCHEMY_ECHO = False
+SQLALCHEMY_TRACK_MODIFICATIONS = True
+SQLALCHEMY_DATABASE_URI = "sqlite:///app.db"
