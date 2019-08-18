@@ -5,9 +5,20 @@ from .models import STK_TrigSent
 from .models import STK_Code
 from django.utils import timezone
 import datetime
+import services
 
 def index(request):
     return render(request, 'StockData/index.html')
+
+def analyzethis(request):
+    if request.method == 'POST':
+        print("dsfds")
+        retTxt = services.extracttextfromhtml(request.POST['urltoextract'])
+        return render(request, 'StockData/AnalyzeThis.html',{'error_message': retTxt})
+    elif request.method == 'GET':
+        print("Is this the issue?")
+        return render(request, 'StockData/AnalyzeThis.html')
+    return
 
 def dispTrigSent(request,strMsg=""):
     stkcds  = STK_Code.objects.filter()
@@ -53,3 +64,10 @@ def delTrigStks (request):
     except Exception as e:
         print (e)
         return render(request, 'StockData/Trigger.html',{'error_message': "FUCKED!"})
+
+def extractText(request):
+    try:
+        print("Lets extract")
+        pass
+    except Exception as e:
+        raise render(request, 'StockData/Trigger.html',{'error_message': "FUCKED!"})

@@ -9,4 +9,5 @@ urlpatterns = [
     path('setTrigSent', views.setTrigSent, name='Trigger'),
     path('getTrigStks', views.getTrigStks, name='GetTrigger'),
     path('delTrigStks', views.delTrigStks, name='GetTrigger'),
+    path('AnalyzeThis', views.analyzethis, name='AnalyzeThis'),
 ]

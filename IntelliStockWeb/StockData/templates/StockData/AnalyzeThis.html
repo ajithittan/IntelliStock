@@ -1,0 +1,9 @@
+<h1>Input the URL that you needed to extract and analyze</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{{ 'AnalyzeThis' }}" method="post">
+{% csrf_token %}
+<input type="url" name="urltoextract" size="35" height="45">
+<input type="submit" value="ExtractText">
+</form>

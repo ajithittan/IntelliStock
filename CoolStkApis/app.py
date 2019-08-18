@@ -6,4 +6,4 @@ api_bp = Blueprint('api', __name__)
 api = Api(api_bp)
 
 # Route
-api.add_resource(ExtractTxt, '/ExtractTxt')
+api.add_resource(ExtractTxt, '/ExtractTxt', '/ExtractTxt/<string:url>')
