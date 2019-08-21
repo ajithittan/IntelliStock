@@ -3,16 +3,16 @@ from webargs import fields, validate
 from webargs.flaskparser import use_args, use_kwargs, parser, abort
 from bs4 import BeautifulSoup
 import requests
-
+import utils
 
 class ExtractTxt(Resource):
 
-    url_args = {"inpURL": fields.Str()}
+    url_args = {"inpurl": fields.Str()}
 
     @use_args(url_args)
-    def get(self,args):
+    def get(self,inpURL):
         print("am i here????????")
-        inpurl = format(args["inpURL"])
+        inpurl = format(inpURL["inpurl"])
         print("what is the url", inpurl)
         req = requests.get(inpurl)
         soup = BeautifulSoup(req.text, 'html.parser')
