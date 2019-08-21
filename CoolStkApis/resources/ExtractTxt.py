@@ -3,7 +3,8 @@ from webargs import fields, validate
 from webargs.flaskparser import use_args, use_kwargs, parser, abort
 from bs4 import BeautifulSoup
 import requests
-import utils
+import urllib3.request
+from resources import utils
 
 class ExtractTxt(Resource):
 
@@ -14,10 +15,11 @@ class ExtractTxt(Resource):
         print("am i here????????")
         inpurl = format(inpURL["inpurl"])
         print("what is the url", inpurl)
-        req = requests.get(inpurl)
-        soup = BeautifulSoup(req.text, 'html.parser')
-        print(soup.text)
-        return (soup.text)
+        response =  urllib3.request.urlopen(inpurl)
+        html = response.read()
+        cleaned = utils.cleanme(html)
+        print (cleaned)
+        return (cleaned)
 
     def post(self):
         return {"message": "Hello, World!"}

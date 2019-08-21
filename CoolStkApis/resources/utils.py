@@ -1,3 +1,5 @@
+import lxml.html.clean
+
 def cleanme(content):
     cleaner = lxml.html.clean.Cleaner(
         allow_tags=[''],
