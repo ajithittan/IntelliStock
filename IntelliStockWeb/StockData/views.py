@@ -5,7 +5,7 @@ from .models import STK_TrigSent
 from .models import STK_Code
 from django.utils import timezone
 import datetime
-import services
+from StockData import services
 
 def index(request):
     return render(request, 'StockData/index.html')
@@ -14,7 +14,9 @@ def analyzethis(request):
     if request.method == 'POST':
         print("dsfds")
         retTxt = services.extracttextfromhtml(request.POST['urltoextract'])
-        return render(request, 'StockData/AnalyzeThis.html',{'error_message': retTxt})
+        matched_content = services.matchText(retTxt["CleanContent"],request.POST['matchtxt'])
+        print("matched_content",matched_content)
+        return render(request, 'StockData/AnalyzeThis.html',{'content_todisp': retTxt["CleanContent"], 'matched_content': matched_content})
     elif request.method == 'GET':
         print("Is this the issue?")
         return render(request, 'StockData/AnalyzeThis.html')

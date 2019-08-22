@@ -15,11 +15,11 @@ class ExtractTxt(Resource):
         print("am i here????????")
         inpurl = format(inpURL["inpurl"])
         print("what is the url", inpurl)
-        response =  urllib3.request.urlopen(inpurl)
-        html = response.read()
+        response =  requests.get(inpurl)
+        html = response.text
         cleaned = utils.cleanme(html)
         print (cleaned)
-        return (cleaned)
+        return {'CleanContent': cleaned},200
 
     def post(self):
         return {"message": "Hello, World!"}

@@ -5,5 +5,10 @@
 <form action="{{ 'AnalyzeThis' }}" method="post">
 {% csrf_token %}
 <input type="url" name="urltoextract" size="35" height="45">
+<input type="text" name="matchtxt">
 <input type="submit" value="ExtractText">
 </form>
+
+{% if content_todisp %}<p>{{ content_todisp }}</p><hr>{% endif %}
+
+{% if matched_content %}<p>{{ matched_content }}</p><hr>{% endif %}
