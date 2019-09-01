@@ -4,7 +4,7 @@
 
 <form action="{{ 'AnalyzeThis' }}" method="post">
 {% csrf_token %}
-<input type="url" name="urltoextract" size="35" height="45">
+<input type="url" name="urltoextract" size="35" height="45" value="https://finance.yahoo.com/news/monday-vital-data-applied-materials-133017731.html">
 <input type="text" name="matchtxt">
 <input type="submit" value="ExtractText">
 </form>
