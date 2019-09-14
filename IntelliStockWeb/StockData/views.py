@@ -13,7 +13,8 @@ def index(request):
 def analyzethis(request):
     if request.method == 'POST':
         retTxt = services.extracttextfromhtml(request.POST['urltoextract'])
-        matched_content = services.matchText(retTxt["CleanContent"],request.POST['matchtxt'])
+        #matched_content = services.matchText(retTxt["CleanContent"],request.POST['matchtxt'])
+        matched_content = services.match_phrase(retTxt["CleanContent"])
         return render(request, 'StockData/AnalyzeThis.html',{'content_todisp': retTxt["CleanContent"], 'matched_content': matched_content})
     elif request.method == 'GET':
         return render(request, 'StockData/AnalyzeThis.html')
