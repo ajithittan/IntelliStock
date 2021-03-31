@@ -9,5 +9,5 @@ marshmallow-sqlalchemy==0.13.2
 beautifulsoup4==4.6.3
 requests==2.22.0
 webargs==5.4.0
-lxml==4.4.1
+lxml==4.6.3
 urllib3==1.24.3
